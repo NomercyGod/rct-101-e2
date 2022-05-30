@@ -62,7 +62,92 @@
       "price": "100",
       "imageSrc": "https://picsum.photos/seed/picsum2/421/261",
       "id": 8
+    },
+    {
+      "category": "shirt",
+      "title": "ABCD",
+      "gender": "male",
+      "price": "300",
+      "imageSrc": "https://picsum.photos/seed/picsum2/421/261",
+      "id": 9
+    },
+    {
+      "0": {
+        "id": 1,
+        "title": "react tshirt",
+        "category": "pant",
+        "gender": "male",
+        "imageSrc": "https://picsum.photos/seed/picsum6/420/260",
+        "price": "23.00"
+      },
+      "1": {
+        "id": 2,
+        "title": "chakraUI mug",
+        "category": "pant",
+        "gender": "female",
+        "imageSrc": "https://picsum.photos/seed/picsum5/421/261",
+        "price": "15.00"
+      },
+      "2": {
+        "id": 3,
+        "title": "black tshirt",
+        "category": "jeans",
+        "gender": "female",
+        "imageSrc": "https://picsum.photos/seed/picsum4/422/262",
+        "price": "10.25"
+      },
+      "3": {
+        "id": 4,
+        "title": "react tshirt",
+        "category": "jeans",
+        "gender": "unisex",
+        "imageSrc": "https://picsum.photos/seed/picsum3/420/260",
+        "price": "23.00"
+      },
+      "4": {
+        "id": 5,
+        "title": "chakraUI mug",
+        "category": "jeans",
+        "gender": "unisex",
+        "imageSrc": "https://picsum.photos/seed/picsum2/421/261",
+        "price": "15.00"
+      },
+      "5": {
+        "id": 6,
+        "title": "black tshirt",
+        "category": "category",
+        "imageSrc": "https://picsum.photos/seed/picsum1/422/262",
+        "price": "10.25"
+      },
+      "6": {
+        "title": "A",
+        "category": "shirt",
+        "gender": "female",
+        "price": "100",
+        "imageSrc": "https://picsum.photos/seed/picsum2/421/261",
+        "id": 7
+      },
+      "7": {
+        "title": "A",
+        "category": "shirt",
+        "gender": "male",
+        "price": "100",
+        "imageSrc": "https://picsum.photos/seed/picsum2/421/261",
+        "id": 8
+      },
+      "8": {
+        "category": "shirt",
+        "title": "ABCD",
+        "gender": "male",
+        "price": "300",
+        "imageSrc": "https://picsum.photos/seed/picsum2/421/261",
+        "id": 9
+      },
+      "title": "a",
+      "category": "shirt",
+      "gender": "male",
+      "price": "15000s",
+      "id": 10
     }
-    
   ]
 }
