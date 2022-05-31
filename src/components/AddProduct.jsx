@@ -1,140 +1,133 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
   Button,
+  Modal,
+  ModalBody,
   Input,
   Select,
   RadioGroup,
   Radio,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
 import axios from "axios";
 
-const AddProduct = () => {
+const AddProduct = (props) => {
+  // TODO: Remove below const and instead import them from chakra
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const initialRef = React.useRef();
+  const finalRef = React.useRef();
 
-  const [querry, setquerry] = useState({
-    title: "",
-    category: "",
-    gender: "",
-    imageSrc: "",
-    price: "",
-  });
+  let setquerry = props.setquerry;
+  let querry = props.querry;
+  let setServer = props.setServer;
 
- 
-  function storedata(e) {
-    if (typeof e != "string") {
-      const { name, value, checked, type } = e.target;
-      setquerry({ ...querry, [name]: value });
+  function deta(e) {
+    if (typeof e == "string") {
+      {
+        setquerry({ ...querry, ["gender"]: e });
+      }
     } else {
-      setquerry({ ...querry, gender: e });
+      const { value, name } = e.target;
+      setquerry({ ...querry, [name]: value });
     }
-    
   }
- 
- useEffect(() => {
-   fetch("http://localhost:8080/products")
-  .then((r) => r.json())
-  .then((d) => setquerry(d));
-
-console.log(querry);
-  
- }, [])
- 
-
-
-  function senddata(e) {
-    e.preventDefault();
-    fetch("http://localhost:8080/products",{
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify( {...querry} ),
-    
-    })
-      .then((r) => r.json())
-      .then((d) => setquerry([...querry,d]));
+  function storedata(e){
+    e.preventDefault()
+    onClose()
+    axios.post()
   }
 
   return (
     <>
-      <Button onClick={onOpen} my={4} data-cy="add-product-button">
-        Add New Product{" "}
+      <Button
+        my={4}
+        onClick={onOpen}
+        data-cy="add-product-button"
+        m={"10"}
+        maxWidth={"fit-content"}
+      >
+        Add New Product
       </Button>
-
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
         <ModalOverlay />
-
         <ModalContent>
-          <ModalHeader>Create your account</ModalHeader>
+          <ModalHeader>Add New Product</ModalHeader>
           <ModalCloseButton />
-          <ModalBody pb={5}>
+          <ModalBody pb={6}>
             <p>Title</p>
             <Input
+              mt={3}
+              onChange={deta}
+              name="Title"
               data-cy="add-product-title"
-              name="title"
-              onChange={storedata}
-              placeholder="Title"
             />
             <p>Category</p>
             <Select
+              mt={3}
+              onChange={deta}
+              name="Category"
               data-cy="add-product-category"
-              name="category"
-              onChange={storedata}
             >
-              <option data-cy="add-product-category-Category">Category</option>
-              <option data-cy="add-product-category-shirt">shirt</option>
-              <option data-cy="add-product-category-pant">pant</option>
-              <option data-cy="add-product-category-jeans">jeans</option>
+              <option data-cy="add-product-category-shirt">Category</option>
+              <option data-cy="add-product-category-shirt">Shirt</option>
+              <option data-cy="add-product-category-pant">Pant</option>
+              <option data-cy="add-product-category-jeans">Jeans</option>
             </Select>
             <p>Gender</p>
-            <RadioGroup
-              data-cy="add-product-gender"
-              name="gender"
-              onChange={storedata}
-            >
+            <RadioGroup mt={3} onChange={deta} data-cy="add-product-gender">
               <Radio
+                mr={3}
                 data-cy="add-product-gender-male"
-                name="gender2"
                 value={"male"}
+                name="Sgender"
               >
-                male
+                Male{" "}
               </Radio>
               <Radio
+                mr={3}
                 data-cy="add-product-gender-female"
-                name="gender2"
                 value={"female"}
+                name="Sgender"
               >
-                female
+                {" "}
+                Female
               </Radio>
               <Radio
+                mr={3}
                 data-cy="add-product-gender-unisex"
-                name="gender2"
                 value={"unisex"}
+                name="Sgender"
               >
-                unisex
+                {" "}
+                Unisex
               </Radio>
             </RadioGroup>
             <p>Price</p>
             <Input
+              mt={3}
+              onChange={deta}
+              name="Price"
               data-cy="add-product-price"
-              name="price"
-              onChange={storedata}
-              placeholder="Price"
             />
-          </ModalBody>
-          <ModalFooter>
-            <Button data-cy="add-product-submit-button" onClick={senddata}>
+            <Button
+              ml={"80%"}
+              mt={3}
+              onClick={storedata}
+              data-cy="add-product-submit-button"
+            >
               Create
             </Button>
-          </ModalFooter>
+          </ModalBody>{" "}
         </ModalContent>
       </Modal>
     </>
